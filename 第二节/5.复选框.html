@@ -17,7 +17,7 @@
 <body>
 <div id="container">
     <dl>
-        <dt><input type="checkbox" id="checkall">全选 <a href="javascript:">反选</a></dt>
+        <dt><input type="checkbox" id="checkall"><lable>全选</lable>/<a href="javascript:">反选</a></dt>
         <dd>
             <p>
                 <input type="checkbox" class="item">
@@ -59,10 +59,16 @@
 $('#checkall').on('click', function () {
        if(this.checked){
            $('.item').prop('checked',this.checked);//添加使用prop   如果使用attr 造成 checked=checked但不显示勾选
+           $('dt:eq(0)>lable').text('全不选')
+
        }else{
            $('.item').removeAttr('checked');
+           $('dt:eq(0)>lable').text('全选')
        }
 })
+    $('a:eq(0)').on('click', function () {
+        $('.item').removeAttr('checked');
+    })
 </script>
 </body>
 </html>
