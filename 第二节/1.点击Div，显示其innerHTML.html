@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击Div，显示其innerHTML</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<section class="demo1"><strong>剑非道</strong>悟来时见江海古，苍崖行遍谒玄门；向道偶题人间世，一笛一剑一昆仑</section>
+</br>
+<section class="demo2"><strong>叹稀奇</strong>平吞万顷苍茫，吐耀霓虹、剑雄万敌，惊奇自胸中。叹、人狂天地空</section>
+
+<script>
+    //   var sec = document.getElementsByTagName('section');
+    //    for(var i=0;i<sec.length;i++){
+    //        sec[i].onclick = function () {
+    //            alert(this.innerHTML);
+    //        }
+    //    }
+
+
+    // $.each($('section'), function () {
+    //    this.onclick = function () {
+    //        alert(this.innerText)
+    //    }
+    //})
+
+
+    $('section').each(function () {
+        this.onclick = function () {
+            alert(this.innerText)
+        }
+    })
+
+</script>
+</body>
+</html>

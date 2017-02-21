@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        dd{
+            border: 1px solid red;
+            margin: 0;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="container">
+    <dl>
+        <dt><input type="checkbox" id="checkall">全选 <a href="javascript:">反选</a></dt>
+        <dd>
+            <p>
+                <input type="checkbox" class="item">
+                <lable>选项(1)</lable>
+            </p>
+            <p>
+                <input type="checkbox" class="item">
+                <lable>选项(2)</lable>
+            </p>
+            <p>
+                <input type="checkbox" class="item">
+                <lable>选项(3)</lable>
+            </p>
+            <p>
+                <input type="checkbox" class="item">
+                <lable>选项(4)</lable>
+            </p>
+            <p><input type="checkbox" class="item">
+                <lable>选项(5)</lable>
+            </p>
+            <p>
+                <input type="checkbox" class="item">
+                <lable>选项(6)</lable>
+            </p>
+            <p>
+                <input type="checkbox" class="item">
+                <lable>选项(7)</lable>
+            </p>
+            <p>
+                <input type="checkbox" class="item">
+                <lable>选项(8)</lable>
+            </p>
+        </dd>
+    </dl>
+</div>
+
+<script>
+//    console.log($('input:eq(0)'))
+$('#checkall').on('click', function () {
+       if(this.checked){
+           $('.item').prop('checked',this.checked);//添加使用prop   如果使用attr 造成 checked=checked但不显示勾选
+       }else{
+           $('.item').removeAttr('checked');
+       }
+})
+</script>
+</body>
+</html>

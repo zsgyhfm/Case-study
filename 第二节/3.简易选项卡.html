@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        .container {
+            width: 450px;
+            margin: 0 auto;
+            border: 1px solid #3c3c3c;
+        }
+
+        #top {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            overflow: hidden;
+            /*border:1px solid #3c3c3c;*/
+            font-size: 13px;
+            background-color: #3c3c3c;
+            height: 32px;
+            line-height: 32px;
+        }
+
+        #top > li {
+            float: left;
+            width: 100px;
+            text-align: center;
+            background-color: #3c3c3c;
+            color: white;
+        }
+
+        #top > li.current {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<input  id="ret" type="button" value="清空">
+<div class="container">
+    <ul id="top">
+        <li>第一课</li>
+        <li>第二课</li>
+        <li>第二课</li>
+    </ul>
+    <ul id="content">
+        <li>1</li>
+    </ul>
+</div>
+<script>
+    //第一个选项卡
+    var data0 = ["网页特效原理分析",
+        "响应用户操作",
+        "提示框效果",
+        "事件驱动",
+        "元素属性操作",
+        "动手编写第一个JS特效",
+        "引入函数",
+        "网页换肤效果",
+        "展开/收缩播放列表效果"];
+    //第二个选项卡
+    var data1 = ["改变网页背景颜色",
+        "函数传参",
+        "高重用性函数的编写",
+        "126邮箱全选效果",
+        "循环及遍历操作",
+        "调试器的简单使用",
+        "典型循环的构成",
+        "for循环配合if判断",
+        "className的使用",
+        "innerHTML的使用",
+        "戛纳印象效果",
+        "数组",
+        "字符串连接"];
+    //第三个选项卡
+    var data2 = ["JavaScript组成：ECMAScript、DOM、BOM，JavaScript兼容性来源",
+        "变量、类型、typeof、数据类型转换、变量作用域",
+        "闭包：什么是闭包、简单应用、闭包缺点",
+        "运算符：算术、赋值、关系、逻辑、其他运算符",
+        "程序流程控制：判断、循环、跳出",
+        "命名规范：命名规范及必要性、匈牙利命名法",
+        "函数详解：函数构成、调用、事件、传参数、可变参、返回值",
+        "定时器的使用：setInterval、setTimeout",
+        "定时器应用：站长站导航效果",
+        "定时器应用：自动播放的选项卡",
+        "定时器应用：数码时钟",
+        "程序调试方法",
+        "JavaScript出现的位置、优缺点",
+        "变量、类型、typeof、数据类型转换、变量作用域",
+        "闭包：什么是闭包、简单应用、闭包缺点",
+        "运算符：算术、赋值、关系、逻辑、其他运算符",
+        "程序流程控制：判断、循环、跳出",
+        "命名规范：命名规范及必要性、匈牙利命名法",
+        "函数详解：函数构成、调用、事件、传参数、可变参、返回值",
+        "定时器的使用：setInterval、setTimeout",
+        "定时器应用：站长站导航效果",
+        "定时器应用：自动播放的选项卡",
+        "定时器应用：数码时钟",
+        "程序调试方法"];
+    //分理出函数
+    var li = '';
+    function creatLi(data,index) {
+        var li = '';
+        for (i = 0; i < data.length; i++) {
+           var  str = '<li>' + data[i] + '</li>'
+            li += str;
+        }
+        content.innerHTML = li;
+        console.log(li);
+        return index;
+
+    }
+
+    //获取选项卡DOM
+    var tab = document.getElementById('top');
+    var content = document.getElementById('content');
+    //获取选项卡的子元素 默认第一个是选中状态
+    var tablis = tab.children;
+    tablis[0].className = 'current';
+        creatLi(data0);
+    //添加悬浮事件
+    var num = 0;
+    var current = tablis[0];
+    for (var i = 0; i < tablis.length; i++) {
+        tablis[i].index = i;
+        tablis[i].onmousemove = function () {
+            current.removeAttribute('class');
+            this.className = 'current';
+            current = this;
+                if (this.index == 0&&num!=this.index) {
+                    num =  creatLi(data0,this.index);
+                } else if (this.index == 1&&num!=this.index) {
+                   num= creatLi(data1,this.index)
+                } else if(this.index==2&&num!=this.index){
+                   num= creatLi(data2,this.index);
+                }
+        }
+
+    }
+ document.getElementById('ret').onclick = function () {
+     content.innerHTML = ' ';
+ }
+
+
+</script>
+</body>
+</html>

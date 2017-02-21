@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数传参，改变Div任意属性的值</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .container {
+            width: 200px;
+            text-align: center;
+            margin: 10px auto;
+
+        }
+        #content {
+            width: 200px;
+            height: 200px;
+            margin: 10px auto;
+            color: white;
+            background-color: black;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span>属性名:</span><input type="text"></br>
+    <span>属性值:</span><input type="text"></br>
+    <input type="button" value="确定">
+    <input type="button" value="重置">
+</div>
+<div id="content">
+    在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。
+</div>
+<script>
+//    //.取得DOM元素
+//    var input = document.getElementsByTagName('input');
+//    //.取得容器DOM
+//    var con = document.getElementById('content');
+//    //1.确定按钮
+//    input[2].onclick = function () {
+//        //1.获取文本框内容
+//        var pro = input[0].value;
+//        var prov = input[1].value;
+//        con.style[pro] = prov;
+//    }
+//    //2.重置
+//    input[3].onclick = function () {
+//        //这样移除的是js改变的属性 而不会影响css中写的属性
+//        con.removeAttribute('style');
+//    }
+    
+    $('input:nth-of-type(3)').on('click', function () {
+        var attr = $('input:nth-of-type(1)').val();
+        var value = $('input:nth-of-type(2)').val();
+//        con.style[pro] = prov;
+        $('#content').css(attr,value)
+
+    })
+</script>
+</body>
+</html>

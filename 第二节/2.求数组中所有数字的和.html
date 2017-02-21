@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>求数组中所有数字的和</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <input type="text" value="1,2,3"></br>
+    <input type="button" value="求和">
+    <p><strong id="sum"></strong></p>
+</div>
+
+<script>
+    /**
+     * 1.字符串转数组   string.split(间隔符)
+     * 2.字符串转换数字  parseInt('string)
+     */
+</script>
+
+<script>
+
+    //点击求和
+    //    var btn = document.getElementsByTagName('input')[1];
+    //    var sum = 0;
+    //    btn.onclick = function () {
+    //        sum = 0;
+    //        //获取文本框DOM
+    //        var text = document.getElementsByTagName('input')[0];
+    //        var content = text.value;
+    //        //字符串转成数组
+    //        var arr = content.split(',')
+    //
+    //        for (var i = 0; i < arr.length; i++) {
+    //            //将字符串转换成数字类型
+    //            var num = parseInt(arr[i]);
+    //            sum += num;
+    //        }
+    //        document.getElementById('sum').innerText = sum;
+    //    }
+
+    var sum = 0;
+    $('input:nth-of-type(2)').on('click', function () {
+        sum = 0;
+        //获取文本框DOM
+        var text = document.getElementsByTagName('input')[0];
+        var content = text.value;
+        //字符串转成数组
+        var arr = content.split(',')
+
+        for (var i = 0; i < arr.length; i++) {
+            //将字符串转换成数字类型
+            var num = parseInt(arr[i]);
+            sum += num;
+        };
+        $('#sum').text(sum)
+    })
+
+</script>
+</body>
+</html>
