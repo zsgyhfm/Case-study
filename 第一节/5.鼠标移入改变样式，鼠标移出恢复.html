@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移入改变样式，鼠标移出恢复</title>
+    <script src="../Lib/jquery.min.js"></script>
+    <style>
+        .demo {
+            width: 200px;
+            height: 200px;
+            border: 10px solid black;
+            margin: 0 auto;
+            color: white;
+            background-color: black;
+        }
+
+        /*第一中方法可以用hover选择器*/
+        /*.demo:hover{*/
+        /*border-color: red;*/
+        /*color: red;*/
+        /*background-color: wheat;*/
+        /*}*/
+
+        .hover {
+            border-color: red;
+            color: red;
+            background-color: wheat;
+        }
+    </style>
+</head>
+<body>
+<div class="demo">
+    鼠标移入改变样式，鼠标移出恢复
+</div>
+<script>
+    //    //1.悬浮事件
+    //    var div = document.getElementsByClassName('demo')[0];
+    //    div.onmouseover = function () {
+    //        div.className = 'demo hover';
+    //    }
+    //    div.onmouseout = function () {
+    //        div.className = 'demo'
+    //    }
+    $('.demo:nth-of-type(1)').on('mouseover', function () {
+        $(this).attr('class', 'demo hover')
+    });
+    $('.demo:nth-of-type(1)').on('mouseout', function () {
+        $(this).attr('class', 'demo')
+    })
+
+</script>
+</body>
+</html>

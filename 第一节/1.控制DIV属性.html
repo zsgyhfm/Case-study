@@ -3,8 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../CSS/Base.css">
+    <script src="../Lib/jquery.min.js"></script>
+    <style>
+        #container{
+            text-align: center;
+        }
+        #demo{
+            width: 80px;
+            height: 80px;
+            background-color: #0f0f0f;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-<div id="demo"></div>
+<div id="container">
+    <input type="button" value="变宽">
+    <input type="button" value="变高">
+    <input type="button" value="变色">
+    <input type="button" value="隐藏">
+    <input type="button" value="重置">
+    <div id="demo"></div>
+</div>
+<script>
+    /**
+     *  choise one
+     */
+    var data = [
+        {
+            attr:'width',
+            val:'200px'
+        },
+        {
+            attr:'height',
+            val:'200px'
+        },
+        {
+            attr:'backgroundColor',
+            val:'red'
+        },
+        {
+            attr:'display',
+            val:'none'
+        }
+
+    ];
+    function operaAttr(ele,attr,val){
+        $(ele).css(attr,val);
+    }
+
+
+
+
+    $('input:nth-of-type(1)').on('click', function () {
+        $('#demo').css('width','200px');
+    })
+    $('input:nth-of-type(2)').on('click', function () {
+        $('#demo').css('height','200px');
+    })
+    $('input:nth-of-type(3)').on('click', function () {
+        $('#demo').css('backgroundColor','red');
+    })
+    $('input:nth-of-type(4)').on('click', function () {
+        $('#demo').css('display','none');
+    })
+    $('input:nth-of-type(5)').on('click', function () {
+        $('#demo').removeAttr('style')
+    })
+
+</script>
 </body>
 </html>

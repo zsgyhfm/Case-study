@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>记住密码提示框</title>
+    <style>
+        .demo {
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        .info {
+            margin-top: 10px;
+            width: 150px;
+            font-size: 12px;
+            border: 1px solid red;
+            background-color: wheat;
+        }
+    </style>
+</head>
+<body>
+<div class="demo">
+    <input type="checkbox"><span>两周内自动登录</span>
+    <div class="info">为了您的信息安全请不要再网吧 勾选此项</div>
+</div>
+<script>
+    //获取单选框
+    var check = document.getElementsByTagName('input')[0];
+    //获取提示框
+    var info = document.getElementsByClassName('info')[0];
+
+    info.style.display = 'none';
+    check.onmouseover = function () {
+//        info.style.display = 'none';
+        info.removeAttribute('style');
+
+    }
+    check.onmouseout = function () {
+        info.style.display = 'none';
+    }
+</script>
+
+<script>
+    var div = document.getElementById('demo');
+    var div1 = document.createElement('input');
+    div1.setAttribute('type', 'button');
+    div1.setAttribute('value', '按钮')
+    div.appendChild(div1);
+</script>
+
+</body>
+</html>

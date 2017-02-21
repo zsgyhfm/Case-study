@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用循环将三个DIV变成红色</title>
+    <script src="../Lib/jquery.min.js"></script>
+    <style>
+        .demo1{
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+
+            overflow: hidden;
+        }
+       
+
+        .demo{
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            float: left;
+            margin-left: 50px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="demo1">
+    <input type="button" value="三个div变红">
+    <p></p>
+    <div class="demo"></div>
+    <div class="demo"></div>
+    <div class="demo"></div>
+</div>
+<script>
+//    //1.获得按钮
+//    var btn = document.getElementsByTagName('input')[0];
+//    //2.获得DOM对象
+//    var div = document.getElementsByClassName('demo');
+//    btn.onclick = function () {
+//        //遍历
+//        for(var i = 0; i<div.length;i++){
+//            div[i].style.backgroundColor='red';
+//        }
+//    }
+    $('input:nth-of-type(1)').on('click', function () {
+        for (var i = 0;i<$('.demo').length;i++){
+            $('.demo').css('backgroundColor','red');
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

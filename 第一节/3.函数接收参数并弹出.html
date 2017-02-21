@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数接收参数并弹出</title>
+    <style>
+        .demo{
+            width: 300px;
+            height: 300px;
+            border:1px solid red;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input{
+            /*margin-left: 10px;*/
+        }
+    </style>
+</head>
+<body>
+<div class="demo">
+    <input type="text" name=""value="北京市" >
+    <p></p>
+    <input type="text" name="" value="朝阳区">
+    <p></p>
+    <input type="button" value="传参">
+</div>
+<script>
+    //1.获取参数
+    var city = document.getElementsByTagName('input')[0].value;
+    var po = document.getElementsByTagName('input')[1].value;
+    var btn = document.getElementsByTagName('input')[2];
+    //1.2 弹出内容函数
+    function at(a,b){
+        alert(a);
+        alert(b);
+    }
+    //2.按钮点击
+    btn.onclick = function () {
+       at(city,po)
+    }
+
+</script>
+</body>
+</html>
