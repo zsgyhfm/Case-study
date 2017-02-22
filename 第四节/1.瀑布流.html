@@ -32,28 +32,8 @@
                 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2231613867,2377294674&fm=11&gp=0.jpg',
                 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=459593232,2408433564&fm=11&gp=0.jpg',
                 'http://img2.imgtn.bdimg.com/it/u=3510003795,2153467965&fm=23&gp=0.jpg',
-//                'http://img1.imgtn.bdimg.com/it/u=66250564,3253305393&fm=23&gp=0.jpg',
-//                'http://img3.imgtn.bdimg.com/it/u=1207302204,1095596055&fm=23&gp=0.jpg',
-//                'http://img0.imgtn.bdimg.com/it/u=981688744,1893502418&fm=11&gp=0.jpg',
-//                'http://img2.imgtn.bdimg.com/it/u=3127712582,417529482&fm=11&gp=0.jpg',
-//                'http://img2.imgtn.bdimg.com/it/u=3788702243,1887108799&fm=11&gp=0.jpg' ,
-//                'http://img2.imgtn.bdimg.com/it/u=3788702243,1887108799&fm=11&gp=0.jpg',
-//                'http://img3.imgtn.bdimg.com/it/u=91523879,3937096966&fm=11&gp=0.jpg',
-//                'http://img4.imgtn.bdimg.com/it/u=4022904450,3694783424&fm=11&gp=0.jpg',
-//                'http://img4.imgtn.bdimg.com/it/u=3281757265,3897724951&fm=23&gp=0.jpg',
-//                'http://img0.imgtn.bdimg.com/it/u=1202152491,3929337631&fm=23&gp=0.jpg',
-//                'http://img2.imgtn.bdimg.com/it/u=3788702243,1887108799&fm=11&gp=0.jpg' ,
-//                'http://img2.imgtn.bdimg.com/it/u=3788702243,1887108799&fm=11&gp=0.jpg',
-//                'http://img3.imgtn.bdimg.com/it/u=91523879,3937096966&fm=11&gp=0.jpg',
-//                'http://img4.imgtn.bdimg.com/it/u=4022904450,3694783424&fm=11&gp=0.jpg',
-//                'http://img4.imgtn.bdimg.com/it/u=3281757265,3897724951&fm=23&gp=0.jpg',
-//                'http://img0.imgtn.bdimg.com/it/u=1202152491,3929337631&fm=23&gp=0.jpg',
-//                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=726378056,1728521985&fm=23&gp=0.jpg',
-//                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1781529129,3310590960&fm=11&gp=0.jpg',
-//                'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=91523879,3937096966&fm=11&gp=0.jpg',
-            ]
 
-
+            ];
             //1.创建元素并添加
             //改进后的方法
             var imgBox = new box(data, 'main');
@@ -107,6 +87,13 @@
 </head>
 <body>
 <div id="main">
+    <div class="box"><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=726378056,1728521985&amp;fm=23&amp;gp=0.jpg" class="pic"></div>
+    <div class="box"><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1781529129,3310590960&amp;fm=11&amp;gp=0.jpg" class="pic"></div>
+    <div class="box"><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=91523879,3937096966&amp;fm=11&amp;gp=0.jpg" class="pic" ></div>
+    <div class="box"><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1181508568,254689595&amp;fm=23&amp;gp=0.jpg" class="pic" ></div>
+    <div class="box"><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2231613867,2377294674&amp;fm=11&amp;gp=0.jpg" class="pic" ></div>
+    <div class="box"><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=459593232,2408433564&amp;fm=11&amp;gp=0.jpg" class="pic" ></div>
+
 </div>
 </body>
 
@@ -118,7 +105,8 @@
      * 3.第二列图片是绝对定位  根据取得第一列最矮图片的索引来确定left的大小 top就是 最矮图片的高度(有容器就是容器高度)
      * 4.更新每一列的高度
      * 5.需要注意的是 我是指定了列数  而不是固定宽度随窗口宽度而改变列数
-     * 6.还是有些问题,如:打开控制台再加载页面 会出现 布局混乱 刷新下才好(未解决)
+     * 6.还是有些问题,如:打开控制台再加载页面 会出现 布局堆叠 刷新下才好(未解决)
+     * 7.解决堆叠问题 可以先放几个box撑着
      */
 </script>
 </html>
