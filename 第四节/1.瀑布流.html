@@ -57,11 +57,7 @@
             //1.创建元素并添加
             //改进后的方法
             var imgBox = new box(data, 'main');
-            imgBox.creatBox();
-            //2.设置列数 获得图片宽度
-            computedCol(6,'main');
-            //3.设置图片出现的位置
-            setPic();
+
            window.onscroll = function () {
                if(checkScroll()){
                    var newData = [
@@ -73,9 +69,9 @@
                        'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=459593232,2408433564&fm=11&gp=0.jpg',
                    ];
                    //添加新的标签
-                   imgBox.addBox(newData);
-                   computedCol(6,'main');
-                   setPic();
+
+                   new box(newData, 'main');
+
                }
            }
         }
