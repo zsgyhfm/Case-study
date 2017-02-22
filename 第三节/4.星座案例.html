@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象案例</title>
+    <script src="../Lib/jquery.min.js"></script>
+    <script src="../Lib/template.js"></script>
+    <link rel="stylesheet" href="base.css">
+    <style>
+
+        #container{
+            width: 800px;
+            height: 500px;
+            /*border:1px solid red;*/
+            /*background-color: lightgray;*/
+            margin: 20px auto;
+        }
+        .item{
+            width: 200px;
+            height: 50px;
+            /*border: 1px solid black;*/
+            float: left;
+            list-style: none;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            position: relative;
+        }
+        .item>img{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        .item p:nth-of-type(1) {
+            position: absolute;
+            top:0px;
+            left:60px;
+            height: 25px;
+
+
+        }
+        .item p:nth-of-type(2) {
+            position: absolute;
+            top:25px;
+            left:60px;
+            height: 25px;
+
+
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="rongqi">
+
+
+    </ul>
+
+</div>
+
+
+
+<script>
+    //1.创建星座对象
+    function xingzuo (data,num){
+        this.config = {
+            jquerycontainer:$('#rongqi')
+        };
+        this.init(data,num);
+    };
+    xingzuo.prototype = {
+        init: function (data,num) {
+            this.data = data;
+            this.num = num;
+            this.dom =  $('<li></li>').addClass('item num'+num);
+            this.data = data;
+            this.bindDom();
+            this.bindEvent();
+
+        },
+        bindDom: function () {
+            //1.创建模板
+
+            var str = '<img src={{img}} alt={{name}}>'
+            +' <p> {{name}} </p>'
+            +' <p> {{birthday}} </p>'
+
+            //利用artTemplate框架绑定 返回一个渲染好的结果
+            var render = template.compile(str);
+            var html = render(this.data);
+            //将渲染好的标签添加到容器
+            this.dom.html(html).appendTo(this.config.jquerycontainer);
+
+
+
+        },
+        bindEvent: function () {
+
+        }
+    }
+    var data = [
+        {
+            name:'白羊座',
+            birthday:'3.21-4.19',
+            img:'https://www.baidu.com/aladdin/img/stars/baiyang.png',
+        },
+        {
+            name:'金牛座',
+            birthday:'4.20-5.20',
+            img:'https://www.baidu.com/aladdin/img/stars/jinniu.png',
+        },
+        {
+            name:'双鱼座',
+            birthday:'5.21-6.21',
+            img:'https://www.baidu.com/aladdin/img/stars/shuangzi.png',
+        },
+        {
+            name:'巨蟹座',
+            birthday:'6.22-7.22',
+            img:'https://www.baidu.com/aladdin/img/stars/juxie.png',
+        },
+        {
+            name:'狮子座',
+            birthday:'7.23-8.22',
+            img:'https://www.baidu.com/aladdin/img/stars/shizi.png',
+        },
+        {
+            name:'处女座',
+            birthday:'8.23-9.22',
+            img:'https://www.baidu.com/aladdin/img/stars/chunv.png',
+        },
+        {
+            name:'天秤座',
+            birthday:'9.23-10.23',
+            img:'https://www.baidu.com/aladdin/img/stars/tianping.png',
+        },
+        {
+            name:'天蝎座',
+            birthday:'10.24-11.22',
+            img:'https://www.baidu.com/aladdin/img/stars/tianxie.png',
+        },
+        {
+            name:'射手座',
+            birthday:'11.23-12.21',
+            img:'https://www.baidu.com/aladdin/img/stars/sheshou.png',
+        },
+        {
+            name:'摩羯座',
+            birthday:'12.22-1.19',
+            img:'https://www.baidu.com/aladdin/img/stars/mojie.png',
+        },
+        {
+            name:'水瓶座',
+            birthday:'1.20-2.18',
+            img:'https://www.baidu.com/aladdin/img/stars/shuiping.png',
+        },
+        {
+            name:'双鱼座',
+            birthday:'2.19-3.20',
+            img:'https://www.baidu.com/aladdin/img/stars/shuangyu.png',
+        }
+
+    ]
+//       var xing = new xingzuo();
+    for (var i = 0;i<data.length;i++){
+//        xing.init(data[i],i);
+        new xingzuo(data[i],i);
+
+    }
+</script>
+</body>
+</html>

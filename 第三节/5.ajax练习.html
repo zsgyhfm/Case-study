@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>道路佳通安全法律 法规和规章</title>
+    <script src="../Lib/template.js"></script>
+    <style>
+        #htmlid {
+            padding-left: 100px;
+        }
+        p[id^="answer"]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="htmlid">
+
+</div>
+<script id="templateid" type="text/html">
+
+    <div>
+        {{each result}}
+        <section >
+            <p>{{$value.id+"."+$value.question}}</p>
+            <p><img src="{{$value.url}}" alt=""></p>
+            <p> <input type="radio" name="1"> <span>{{$value.item1}}</span>
+                <input type="radio" name="1"> <span>{{$value.item2}}</span>
+                <input type="radio" name="1"> <span>{{$value.item3}}</span>
+                <input type="radio" name="1"> <span>{{$value.item4}}</span>
+            </p>
+            <p id={{"answer"+$value.id+1}}>正确答案{{$value.answer}}</p>
+            <p id ={{"answer"+$value.id}} data-id=>解析:{{$value.explains}}</p>
+            <input class="btn" type="button" value="查看正确答案" data-id={{$value.id}}>
+            <hr>
+        </section>
+        {{/each}}
+    </div>
+
+</script>
+
+<script>
+    /**
+     * 注意的是abc是回调函数 需要写在  加载数据的 脚本之前  更要在下面的绑定方法之前
+     */
+    //数据
+    var datas;
+    function abc(data) {
+        datas = data;
+        console.log(data)
+    }
+</script>
+<script src="http://v.juhe.cn/jztk/query?subject=1&model=c1&key=6de46bc71a1d3d08f6276fc75c15eeb3&dtype=jsonp&callback=abc&testType=rand"></script>
+<script>
+
+
+    //绑定方法
+    /**
+     *
+     * @param templateid 模板id
+     * @param htmlid  需要展示内容的标签id
+     * @param data  数据
+     */
+    function bindData(templateid, htmlid, data) {
+        var html = template(templateid, data);
+//        console.log(html);
+        document.getElementById(htmlid).innerHTML = html;
+    }
+
+    bindData('templateid', 'htmlid', datas);
+
+
+    //点击按钮的方法
+    var btn = document.getElementsByClassName('btn');
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].onclick = function () {
+            //获得题目的id
+            var id = this.dataset.id;
+            //取得答案标签的 id
+            var anid = "answer"+id;
+            var anid1 = anid +1;
+            document.getElementById(anid).style.display = 'block';
+            document.getElementById(anid1).style.display = 'block';
+
+        }
+
+    }
+</script>
+
+</body>
+</html>
