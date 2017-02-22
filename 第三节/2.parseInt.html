@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            background-color: #c8bfc3;
+            width: 80px;
+        }
+        #eq:nth-of-type(n-1){
+            color: #2c802b;
+            font-size: 13px;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="container">
+    <input type="text"><lable>+</lable> <input type="text"> = <lable id="eq"> ? </lable>
+    <button>求和</button>
+</div>
+<script>
+    $('button:eq(0)').on('click', function () {
+        $('#eq').text(parseInt($('input:eq(0)').val())+parseInt($('input:eq(1)').val()))
+    })
+</script>
+</body>
+</html>
