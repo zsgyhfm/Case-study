@@ -119,6 +119,7 @@ function getMinH(arr) {
  */
 function checkScroll() {
     "use strict";
+    //alert('执行判断')
     var isAdd;
     var clienH = document.documentElement.clientHeight;//这个高度是根据页面的高度 如果开启控制台那么还的减去控制台遮盖的高度
     //获取最后一个box
