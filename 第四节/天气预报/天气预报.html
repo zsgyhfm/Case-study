@@ -29,7 +29,7 @@
                                                         placeholder="请输入要查询的城市" v-on:change="getWeather()">
     <span v-bind:class="title.size" v-show="show">请输入正确的城市</span>
 
-    div#
+
 
 </div>
 <script>
@@ -70,21 +70,24 @@
                         dataType: 'jsonp',
                         jsonpCallback: 'weather',
                         success: function (data) {
-                            if (data.reason == 'sucessed!') {
+                            console.log(data.reason=='successed!')
+                            if (data.reason=='successed!') {
 
+                            }else {
+                                vm.show = true;
+                                vm.active = 'shake-chunk';
+                                time();
                             }
                         }, complete: function (xhr, ts) {
-                            console.log(xhr);
+//                            console.log(xhr);
                         }
                     });
 
                 }
                 else {
                     this.show = true;
-                    this.active = 'shake-slow';
-                    setTimeout(function () {
-                        vm.active = '';
-                    }, 1000);
+                    this.active = 'shake-chunk';
+                    time();
                 }
 
             }
@@ -92,9 +95,9 @@
     });
     function time() {
         setTimeout(function () {
-            vm.active = false;
-            alert(vm.active)
-        }, 300);
+            vm.active = ' ';
+
+        }, 1000);
     }
 </script>
 </body>

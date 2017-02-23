@@ -30,7 +30,7 @@ box.prototype = {
             var div = document.createElement('div');
             div.setAttribute('class', 'box');
             div.innerHTML = str;
-            main.append(div);
+            main.appendChild(div);
         }
 
     },
