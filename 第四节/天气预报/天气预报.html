@@ -80,6 +80,8 @@
                             }
                         }, complete: function (xhr, ts) {
 //                            console.log(xhr);
+                        },error: function (error) {
+                            console.log('错误信息'+error)
                         }
                     });
 
