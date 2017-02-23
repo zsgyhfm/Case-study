@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报查询</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        .danger {
+            color: red;
+        }
+
+        .size {
+            font-size: 13px;
+            color: red
+        }
+    </style>
+    <link rel="stylesheet" href="csshake.min.css">
+    <script src="//cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+    <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+
+</head>
+<body>
+<div id="app">
+
+    城市 <span v-bind:class="title.color">* </span><input v-bind:class="[active]" type="text" v-model="city"
+                                                        placeholder="请输入要查询的城市" v-on:change="getWeather()">
+    <span v-bind:class="title.size" v-show="show">请输入正确的城市</span>
+
+    div#
+
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            key: 'fe61b1970cf98d67432f5ed1aa6e8d1b',
+            baseUrl: 'http://op.juhe.cn/onebox/weather/query',
+            city: '',
+            title: {
+                color: 'danger',
+                size: 'size',
+            },
+            weatherInfo: {
+                puttime: '',//发布时间
+                moon: '',//阴历
+                week:'',//星期
+                temperature:'',//温度
+                humidity:'',//湿度
+                info:'',//什么天气-如 阵雨
+
+            },
+            show: '',
+            active: ''
+        },
+        template:'',
+        methods: {
+            //请求api
+            getWeather: function () {
+                if (this.key && this.city.length > 1) {
+                    this.show = false;
+                    this.active = '';
+                    var url = this.baseUrl + '?cityname=' + this.city + '&key=' + this.key;
+                    //开始请求
+                    $.ajax({
+                        url: url,
+                        type: 'get',
+                        dataType: 'jsonp',
+                        jsonpCallback: 'weather',
+                        success: function (data) {
+                            if (data.reason == 'sucessed!') {
+
+                            }
+                        }, complete: function (xhr, ts) {
+                            console.log(xhr);
+                        }
+                    });
+
+                }
+                else {
+                    this.show = true;
+                    this.active = 'shake-slow';
+                    setTimeout(function () {
+                        vm.active = '';
+                    }, 1000);
+                }
+
+            }
+        }
+    });
+    function time() {
+        setTimeout(function () {
+            vm.active = false;
+            alert(vm.active)
+        }, 300);
+    }
+</script>
+</body>
+</html>

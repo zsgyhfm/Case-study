@@ -37,9 +37,8 @@
             //1.创建元素并添加
             //改进后的方法
             var imgBox = new box(data, 'main');
-
+            //滚动的时候判断是否需要 加载新的内容
            window.onscroll = function () {
-//               alert('执行滚动监听');
                if(checkScroll()){
 
                    var newData = [
@@ -56,9 +55,6 @@
                }
            }
         }
-
-
-
     </script>
     <style>
         * {
