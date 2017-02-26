@@ -11,20 +11,29 @@
 </div>
 <script>
     /**
-     *
-     * @type {Event}
+     * 1.蠢哭了   event是关键字不能作为变量 否则特么的  自定的事件发送 报错 提示事件已经触发
+     * 2.可以用来跨页面传递数据
+     * @type {Element}
      */
-   // 1.创建event对象参数必须是HTMLEvents
-    var event1 = document.createEvent('HTMLEvents');
-    //2.参数分别是  "自定义的事件类型" 是否冒泡   是否阻止浏览器默认事件
-    event1.initEvent('li', true, true);
-    document.addEventListener('li', function (e) {
-        console.log('触发' + e.type);
-    });
-    //3.特别需要注意的事情是 只能使用公共对象才能在按钮的事件中发送事件  否则就提示事件已经被执行,或许是不支持多线程把(现在不清楚)
-    obj.addEventListener('click', function () {
-        document.dispatchEvent(event1)
+    var obj = document.getElementById('obj');
+    var test = document.getElementById('test');
+    //1.创建事件对象
+    var ddd = document.createEvent('HTMLEvents');
+    ddd.initEvent('dd', true, true);
+    ddd.pp = '你好';//可以自定义参数 赋值 可以达到
+    //2.绑定事件
+    test.addEventListener('dd', function (e) {
+//        alert('触发了' + e.type + '事件');
+        alert(e.pp);
     })
+    document.addEventListener('dd', function () {
+        console.log('触发document')
+    })
+    obj.addEventListener('click', function () {
+        test.dispatchEvent(ddd);//发送一次通知 所有绑定这个事件的都会被执行绑定的函数
+//        document.dispatchEvent(ddd)
+    })
+
 
 </script>
 </body>
