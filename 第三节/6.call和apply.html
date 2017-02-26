@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call和apply</title>
+</head>
+<body>
+<script>
+    /**
+     call方法:
+     语法：call([thisObj[,arg1[, arg2[,   [,.argN]]]]])
+     定义：调用一个对象的一个方法，以另一个对象替换当前对象。
+     说明：
+     call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。
+     如果没有提供 thisObj 参数，那么 Global(全局) 对象被用作 thisObj。
+
+     apply方法：
+     语法：apply([thisObj[,argArray]])
+     定义：应用某一对象的一个方法，用另一个对象替换当前对象。
+     说明：
+     如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。
+     如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。
+     */
+    function cat(e) {
+        this.va = e;
+    }
+    cat.prototype = {
+        say: function (a) {
+            console.log(a||this.va);
+        }
+    };
+    function dog() {
+
+    }
+
+    var miao = new cat('喵喵');
+    miao.say()
+    var gou = new dog();
+    miao.say.call(dog,'123');//call方法置换了对象   cat对象调用自己的方法 使用call把dog对象跟cat替换了.这样就是dog调用cat的函数
+    miao.say.apply(dog,['哦哦哦哦哦']);//apply和call基本无差别 ,差别在于参数,apply参数必须是数组
+    miao.say.call(null,'123');
+
+    //下面例子区分
+    var arr = [1,2,3,4,5,6,7,7,120,23];
+    //求最小值 Math.min参数不能传入 数组 所以使用apply函数  这样可以传入数组
+    var minNum = Math.min.apply(null,arr);
+    console.log('最小值'+minNum);
+</script>
+</body>
+</html>
