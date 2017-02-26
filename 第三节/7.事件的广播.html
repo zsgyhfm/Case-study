@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件广播</title>
+</head>
+<body>
+<div id="app">
+    <button id="obj">按钮obj</button>
+    <button id="test">按钮test</button>
+</div>
+<script>
+    //给document绑定事件
+//    document.addEventListener('lc', function (event) {
+//        alert('触发自定义的事件');
+//    }, false);
+//
+
+
+    //创建event对象
+    var event = document.createEvent('HTMLEvents');//注意 参数必须是HTMLEvents
+    event.initEvent('lc',true,true);
+
+
+    var obj = document.getElementById("obj");
+    var test = document.getElementById('test');
+
+    test.addEventListener('lc', function () {
+        alert('触发');
+    })
+//    test.dispatchEvent(event);//这样直接执行触发可以
+    //obj元素上绑定click事件 点击触发 test上绑定的事件
+    obj.onclick = function () {
+        test.dispatchEvent(event);//在obj的click事件中 执行就报错  提示  事件已经被分发
+    }
+</script>
+</body>
+</html>
