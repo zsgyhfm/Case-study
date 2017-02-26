@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重复</title>
+</head>
+<body>
+<script>
+    /**
+     * 1.元素如果不存在新数组中就加入
+     * @type {*[]}
+     */
+    var arr =  [1,'b','b',4,3,3,4,5,1];
+    Array.prototype.noRepeat = function () {
+        //1.创建一个新数组
+        var newArr = [];
+        for (var i=0;i<this.length;i++){
+           //判断新数组中元素是否在原数中
+            if(newArr.indexOf(this[i]) == -1){
+                newArr.push(this[i]);
+            }
+
+        }
+        return newArr;
+    }
+    console.log(arr);
+   console.log( arr.noRepeat());
+
+    /**
+     * 2.和上面方法相似 不过是判断 旧数组中出现的索引是否一致 如果一致 就不重复
+     */
+    var arr =  [1,'b','b',4,3,3,4,5,1];
+    Array.prototype.noRepeat = function () {
+        //1.创建一个新数组
+        var newArr = [];
+        for (var i=0;i<this.length;i++){
+            //判断新数组中元素是否在原数中
+            if(this.indexOf(this[i]) == i){
+                newArr.push(this[i]);
+            }
+
+        }
+        return newArr;
+    }
+    console.log(arr);
+    console.log( arr.noRepeat());
+
+    /**
+     * 3.哈希表发
+     * 这里比较难理解，我们一步一步来看：
+       hash是一个对象，则存在键值对（key：value），只不过现在是为空的,所以hash[key] = value;
+       第一步：i=0; hash[shuzu[0]] = hash[1] , 因为hash初始为空，没有找到key=1的值，所以然后undefined，
+       执行下一步：hash[1] = true(此时hash对象就有了第一组键值对)，将原数组的第一个数添加到新数组中，重复第一步
+       因为不重复的判断hash的值都是undefined，而重复的都为true了,所以不重复都被添加到新数组中
+       因为hash表存的值是存的地址，放在堆内存中，所以有多少个不重复的元素，就要分多少个内存来存放，所以这种方法比较占内存，但是相比之下，这种的运算运动是最快的，
+       这也就是用空间来换取时间了，数据量比较小，推荐用此方法
+     */
+    function noRepeat(shuzu){
+        var hash = {};
+        var newArr=[];
+        for(var i=0;i<shuzu.length;i++){
+            if(!hash[shuzu[i]]){
+                hash[shuzu[i]]=true;
+                newArr.push(shuzu[i]);
+            }
+
+        }
+        return newArr;
+    }
+   console.log('哈希'+ noRepeat(arr))
+
+</script>
+</body>
+</html>
