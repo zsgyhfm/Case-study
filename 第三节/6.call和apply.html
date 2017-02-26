@@ -40,11 +40,26 @@
     miao.say.apply(dog,['哦哦哦哦哦']);//apply和call基本无差别 ,差别在于参数,apply参数必须是数组
     miao.say.call(null,'123');
 
+
+    /************************************************************************************************/
+
     //下面例子区分
     var arr = [1,2,3,4,5,6,7,7,120,23];
     //求最小值 Math.min参数不能传入 数组 所以使用apply函数  这样可以传入数组
     var minNum = Math.min.apply(null,arr);
     console.log('最小值'+minNum);
+    /************************************************************************************************/
+
+
+    var obj1 = new Object();
+    obj1.name = 'zaks';
+    obj1.show = function () {
+        console.log(this.name)
+    }
+    obj1.show();
+    var obj2 = new Object();
+    obj2.name = 'cloud'
+    obj1.show.call(obj2,obj2.name);//或者this.name也可以
 </script>
 </body>
 </html>
