@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div class="container">
+        <input type="text">
+        <input type="button" value="是否为两位数">
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        //0.声明变量存储文本框内容
+        var text;
+        //1.监听文本框
+        $('input:first').bind('input', function () {
+        var that = $(this);
+            //使用正则表达式匹配数字
+            this.value= this.value.replace(/[^\d]/,"")
+          
+    });
+    //验证是否是两位数
+    $('input:last').bind('click',function(){
+        var str = $('input:first').val();
+      alert("是"+str.length+"位数")
+    });
+    </script>
+</body>
+
+</html>

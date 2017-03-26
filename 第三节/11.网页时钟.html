@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <div class="container">
+        <span class="item">21</span >点<span class="item">31</span >分<span class="item">23</span>秒
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        function getLocTime(){
+            setInterval(function(){
+                //1.取得本地时间
+            var date = new Date();
+            var hour = date.getHours();
+            var minutes = date.getMinutes();
+            var second = date.getSeconds();
+            if(second<10){
+                second="0"+second;
+            }
+            // console.log(hour+":"+minutes+":"+second);
+            //获得dom
+            var items = $('.item');
+            items[0].innerText = hour;
+            items[1].innerText = minutes;
+            items[2].innerText = second;
+            
+            },500);
+        }
+        getLocTime();
+    </script>
+    </body>
+</html>
